@@ -1,3 +1,5 @@
+package com.so;
+
 public class Bid {
 
     private Item item;
@@ -23,4 +25,5 @@ public class Bid {
     public void setAmount(int amount) {
         this.amount = amount;
     }
+
 }

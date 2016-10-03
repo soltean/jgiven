@@ -1,7 +1,10 @@
+package com.so;
+
 public class Item {
 
     private int reservePrice;
     private String code;
+    private boolean sold;
 
     public Item(String code, int reservePrice) {
         this.code = code;
@@ -22,5 +25,20 @@ public class Item {
 
     public void setCode(String code) {
         this.code = code;
+    }
+
+    public boolean isSold() {
+        return sold;
+    }
+
+    public void setSold(boolean sold) {
+        this.sold = sold;
+    }
+
+    @Override
+    public String toString() {
+        return "Item{" +
+                "reservePrice=" + reservePrice +
+                '}';
     }
 }

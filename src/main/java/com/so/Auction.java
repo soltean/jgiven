@@ -1,5 +1,9 @@
-import java.util.*;
-import java.util.stream.Collectors;
+package com.so;
+
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Optional;
 
 public class Auction {
 
@@ -12,23 +16,26 @@ public class Auction {
         bids.add(bid);
     }
 
-    public List<Bid> getAllBidsForItem(final Item item) {
-        return bids.stream().filter(bid -> bid.getItem().getCode().equals(item.getCode())).collect(Collectors.toList());
-    }
-
-    public Bid sellItem(Item item) {
-        Bid highestBid = bids.stream()
+    public Bid getHighestBid(Item item) {
+        return bids.stream()
                 .filter(bid -> bid.getItem().getCode().equals(item.getCode()))
                 .max(Comparator.comparing(bid -> bid.getAmount()))
                 .get();
-        if (highestBid.getAmount() < item.getReservePrice()) {
-            throw new UnsupportedOperationException("Cannot sell item " + item.getCode() + " below the reserve price");
+    }
+
+    public void sellItemIfPossible(Bid bid) {
+        Item item = bid.getItem();
+        if (bid.getAmount() < item.getReservePrice()) {
+            item.setSold(true);
         }
-        return highestBid;
     }
 
     public List<Item> getItems() {
         return items;
+    }
+
+    public List<Bid> getBids() {
+        return bids;
     }
 
     public void addItems(List<Item> items) {
