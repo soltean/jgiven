@@ -29,5 +29,4 @@ public class Bids extends Stage<Bids> {
             auction.sendBidForItem(item, ThreadLocalRandom.current().nextInt(1500, 2000));
         }
     }
-
 }

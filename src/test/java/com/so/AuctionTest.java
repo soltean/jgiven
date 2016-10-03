@@ -55,6 +55,4 @@ public class AuctionTest {
         evaluateBids.when().winning_bid_is_found_for(goldPen);
         sellItemIfPossible.then().item_is_not_sold();
     }
-
-
 }
